@@ -6,16 +6,16 @@ import logging
 log = logging.getLogger(__name__)
 
 def getRateAreasByZipcode(zips_input: str):
-    """_summary_
+    """gets the rate areas associated by zipcode and saves the tuple in dictionary 
 
     Args:
-        zips_input (str): _description_
+        zips_input (str): zip file csv
 
     Raises:
-        e: _description_
+        e: error
 
     Returns:
-        _type_: _description_
+        _type_: dict
     """
     try:
         with open(zips_input, mode="r") as zips:
@@ -28,16 +28,16 @@ def getRateAreasByZipcode(zips_input: str):
     return rate_areas_by_zipcode
 
 def getSilverRatesByRateArea(plans_input: str):
-    """_summary_
+    """gets the silver rates associated by rate area and saves the tuple in dictionary 
 
     Args:
-        plans_input (str): _description_
+        plans_input (str): plans file csv
 
     Raises:
-        e: _description_
+        e: error
 
     Returns:
-        _type_: _description_
+        _type_: dict
     """
     try:
         with open(plans_input, mode="r") as plans:
@@ -52,18 +52,18 @@ def getSilverRatesByRateArea(plans_input: str):
     return silver_rates_by_rate_area
 
 def getSLCSPByZipcode(zipcode: str, rate_areas_by_zipcode: dict, silver_rates_by_rate_area: dict):
-    """_summary_
+    """gets the SLCSP benchmark associated by zipcode and returns the value
 
     Args:
-        zipcode (str): _description_
-        rate_areas_by_zipcode (dict): _description_
-        silver_rates_by_rate_area (dict): _description_
+        zipcode (str): zipcode
+        rate_areas_by_zipcode (dict): rate areas by zipcode dictionary
+        silver_rates_by_rate_area (dict): silver rates by rate area dictionary
 
     Raises:
-        e: _description_
+        e: error
 
     Returns:
-        _type_: _description_
+        _type_: str
     """
     try:
         slcsp_output = ""
@@ -78,15 +78,15 @@ def getSLCSPByZipcode(zipcode: str, rate_areas_by_zipcode: dict, silver_rates_by
     return slcsp_output
 
 def generateOutput(slcsp_input: str, rate_areas_by_zipcode: dict, silver_rates_by_rate_area: dict):
-    """_summary_
+    """Generates the output of zip codes and their associated SLCSP benchmark
 
     Args:
-        slcsp_input (str): _description_
-        rate_areas_by_zipcode (dict): _description_
-        silver_rates_by_rate_area (dict): _description_
+        slcsp_input (str): slcsp file csv
+        rate_areas_by_zipcode (dict): rate areas by zipcode dictionary
+        silver_rates_by_rate_area (dict): silver rates by rate area dictionary
 
     Raises:
-        e: _description_
+        e: error
     """
     try:
         with open(slcsp_input, mode="r") as slcsp:
